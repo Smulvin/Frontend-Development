@@ -43,8 +43,8 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   <img src="readme-images/GameStop_HomePagina.jpg" width="375px" alt="Homepagina van de website">
 
   #### Screenshot(s) van de tweede pagina (small screen):
-  Detailpagina Pokémon 
-  <img src="readme-images/GameStop_DetailPokémon.jpg" width="375px" alt="Een detailpagina voor alles van Pokémon">
+  Detailpagina Super Mario Wonder 
+  <img src="readme-images/GameStop_SuperMarioWonder.jpg" width="375px" alt="Een detailpagina van een specifiek spel: Super Mario Wonder>
  
 </details>
 
