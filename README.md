@@ -68,7 +68,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   <summary>uitwerken na afloop 3<sup>e</sup> werkgroep</summary>
 
   ### de hele pagina: 
-  <img src="readme-images/dummy-plaatje.jpg" width="375px" alt="breakdown van de hele pagina">
+  <img src="readme-images/Breakdownschets.jpg" width="375px" alt="breakdown van de hele pagina">
 
   ### dynamisch deel (bijv menu): 
   <img src="readme-images/dummy-plaatje.jpg" width="375px" alt="breakdown van een dynamisch deel">
@@ -88,17 +88,21 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   <summary>uitwerken voor 1<sup>e</sup> voortgang</summary>
 
   ### Stand van zaken
-  hier dit ging goed & dit was lastig (neem ook screenshots op van delen van je website en code)
+  Ik was begonnen met het maken van de navigatiebalk voor mijn website. Hier ben ik nog niet klaar mee (want moet het hamburgermenu nog),
+  maar hier kwam ik aardig zelfstandig uit met maar een beetje moeite.
+  <img src="readme-images/Voortgang1_Navigatie.JPG">
 
+  Wat er beter ging was het maken van de korte artikelen voor de games die binnenkort uitkomen of net zijn uitgekomen.
+  <img src="readme-images/Voortgang1_Available.JPG">
 
   ### Agenda voor meeting
   samen met je groepje opstellen
 
-  | student 1      | student 2          | student 3    | student 4        |
-  | ---            | ---                | ---          | ---              |
-  | dit bespreken  | en dit             | en ik dit    | en dan ik dat    |
-  | en dat ook nog | dit als er tijd is | nog een punt | dit wil ik zeker |
-  | ...            | ...                | ...          | ...              |
+  | student 1      | student 2          | student 3       | student 4        |
+  | Melvin         | Evi                | Maxwell         | ---              |
+  | - Hamburgermenu| - Hamburgermenu    | - Hamburgermenu | en dan ik dat    |
+  | - Plaatjes ipv | - Footer Grid/Flex | - Grid/Flex?    | dit wil ik zeker |
+  | code           | - Img position     |                 | ...              |
 
 
   ### Verslag van meeting
