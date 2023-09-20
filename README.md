@@ -108,10 +108,11 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   ### Verslag van meeting
   hier na afloop snel de uitkomsten van de meeting vastleggen
 
-  - punt 1
-  - punt 2
-  - nog een punt
-  - ...
+  - Ik kan een class voor de screenreader elementen gebruiken zodat ik ook h elementen kan gebruiken in sommige sections
+  - De divs die ik op het moment gebruik kan ik misschien ook nog vervangen naar een section. (sections in sections is semantisch)
+  - Meer commentaar bij de code van waarop ik het op die manier heb geschreven
+  - Niet sommige p in full caps schrijven, maar gebruik maken van text-transform
+  - Media queries niet in 1 stuk onderaan mijn CSS maar per onderdeel waar het over gaat  
 
 </details>
 
@@ -132,10 +133,10 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   samen met je groepje opstellen
 
   | student 1      | student 2          | student 3    | student 4        |
-  | ---            | ---                | ---          | ---              |
-  | dit bespreken  | en dit             | en ik dit    | en dan ik dat    |
-  | en dat ook nog | dit als er tijd is | nog een punt | dit wil ik zeker |
-  | ...            | ...                | ...          | ...              |
+  | Melvin         | ---                | ---          | ---              |
+  | - Hamburgermenu| en dit             | en ik dit    | en dan ik dat    |
+  | uitbreiding    | dit als er tijd is | nog een punt | dit wil ik zeker |
+  | - Slideshowloop| ...                | ...          | ...              |
 
 
   ### Verslag van meeting

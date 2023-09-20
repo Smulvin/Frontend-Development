@@ -9,16 +9,25 @@
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
+	/*Colors*/
 	--background: #f2f4f7;
 	--white: #FFFFFF;
 	--black: #000000;
+	--searchbar: #f0f0f0;
 	--light: #f2f4f7;
 	--light-gray: #cfd4da;
 	--gray: #c2c4cc;
+	--gray-darker: #787473;
 	--gray-dark: #22252a;
+	--brands-background: #f3f4f8;
 	--light-blue: #00dcfc;
-	--pink: #e83e8c;
+	--pink: #fe017e;
 	--pink-purple: #fb5ef5;
+	--grayoverlay: rgba(105,105,105,100);
+
+	/*Fonts*/
+	--normaltext: 'Poppins', sans-serif;
+	--logotext: 'Anton', sans-serif;
 }
 
 /****************/
@@ -29,11 +38,27 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Poppins', sans-serif;
+	font-family: var(--normaltext);
 }
 
 body {
 	background: var(--background);
+}
+
+/*Ik had eerst geprobeerd om de mainPage in een grid te zetten zodat ik overal dezelfde
+styling kon geven, maar daardoor moest ik bij elke section aangeven bij welke row hij 
+moest beginnen. Dit zou onhandig zijn als ik ooit nog een extra row moest toevoegen. Daarom
+heb ik het nu weggelaten*/
+
+.mainPage {
+	width: 90%;
+	margin: 0 auto;
+}
+
+@media (max-width: 700px){
+	.mainPage {
+		width: 100%;
+	}
 }
 
 /****************/
@@ -41,20 +66,21 @@ body {
 /****************/
 
 /* DonkerGrijze balk */
-header section:nth-of-type(1) {
+header .freeShipping {
 	background: var(--gray-dark);
 	color: var(--white);
 }
 
-header section:nth-of-type(1) p{
+header .freeShipping p{
+	font-size: 0.9em;
 	display: flex;
 	justify-content: center;
 	padding: 0.5em;
-	font-size: 0.9em;
+	
 }
 
 /* Lichtblauwe balk */
-header section:nth-of-type(2) {
+header .blueBanner {
 	background: var(--light-blue);
 	color: var(--black);
 	display: flex;
@@ -62,27 +88,100 @@ header section:nth-of-type(2) {
 	text-align: center;
 }
 
-header section:nth-of-type(2) p{
+header .blueBanner p{
 	font-size: 0.9em;
 	padding: 0.1em;
 }
 
 /* Navigatie menu */
-header nav {
+header nav section:nth-of-type(2){
+	background: var(--white);
 	display: grid;
 	grid-template-columns: 3em max-content 1fr max-content;
-	grid-template-rows: max-content max-content;
-	grid-gap: 0;
-	align-content: center;
-	padding: 0.5em;
+	align-items: center;
 	width: 100%;
+	padding: 1em;
+}
+
+.hamburgerMenu{
 	background: var(--white);
-	position: sticky;
+	position: fixed;
+	width: 25%;;
 	top: 0;
+	left: 0;
+	bottom: 0;
+	transform: translate(-100%, 0% );
+	transition: 0.2s;
+	font-size: 1.3em;
+}
+
+.hamburgerMenu p:first-of-type {
+	font-size: 0.8em;
+	padding: 0.5em 1em;
+}
+
+.hamburgerMenu p:nth-of-type(2) {
+	padding: 0.5em 1em;
+}
+
+.hamburgerMenu p:last-of-type {
+	padding: 0.5em 1em;
+}
+
+.hamburgerMenu p span {
+	font-weight: 600;
+}
+
+.hamburgerMenu hr {
+	color: var(--light-gray);
+}
+
+.hamburgerMenu h2 {
+	padding: 1em;
+	font-weight: 600;
+	font-size: 1.1em;
+}
+
+.hamburgerMenu ul li {
+	font-size: 1em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.8em 1.3em;
+}
+
+.hamburgerMenu ul li:hover {
+	background: var(--light-gray);
+}
+
+.hamburgerMenu ul:first-of-type li:last-of-type {
+	color: red;
+	font-weight: 600;
+}
+
+.toonHamburger {
+	transform: translate(0%,0%);
+	scroll-behavior: auto;
+	overflow-y: scroll;
+}
+
+
+
+header nav button:nth-of-type(1) {
+	background: var(--white);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: none;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 1;
+	font-size: 0.8em;
 }
 
 header nav h1 {
 	font-family: 'Anton', sans-serif;
+	font-size: 2.5em;
 	letter-spacing: 0.05em;
 	grid-column-start: 2;
 	grid-column-end: 3;
@@ -90,54 +189,100 @@ header nav h1 {
 	margin-right: 0.2em;
 }
 
-header nav ul {
+header nav section:nth-of-type(2) ul {
 	display: flex;
 	grid-column-start: 4;
 	grid-column-end: 5;
 	justify-content: end;
 }
 
-header nav ul li {
-	list-style: none;
+header nav section:nth-of-type(2) ul li {
 	font-size: 0.8em;
-	margin: 0.4em;
+	list-style: none;
+	padding: 0.5em 0.7em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+header nav button:nth-of-type(1):hover, 
+header nav section:nth-of-type(2) ul li:hover, 
+.hamburgerMenu p:first-of-type:hover, 
+.hamburgerMenu p:nth-of-type(2):hover {
+	color: red;
 }
 
 header nav form {
+	background: var(--searchbar);
+	display: flex;
 	grid-column-start: 3;
 	grid-column-end: 4;
 	grid-row-start: 1;
-	display: flex;
-}
-
-header nav form button {
-	background: var(--gray);
-	border: none;
+	align-items:center;
 }
 
 header nav form input{
-	background: var(--gray);
-	border: none;
 	font-size: 1.1em;
+	background: var(--searchbar);
+	border: none;
 	width: 100%;
 	grid-row-start: 2;
 	grid-row-end: 4;
 	padding: 0.2em;
 }
 
+@media (max-width: 700px){
+	header nav {
+		grid-template-columns: 3em max-content 1fr;
+	}
+
+	header nav h1 {
+		font-size: 1.6em;
+	}
+
+	header nav form {
+		grid-row-start: 2;
+		grid-column-start: 1;
+		margin-top: 0.4em;
+	}
+
+	header nav ul {
+		grid-column-start: 3;
+		grid-column-end: 4;
+	}
+
+	header nav ul li {
+		font-size: 0.6em;
+		padding: 1em;
+	}
+}
+
 /****************/
 /** CollectFest */
 /****************/
 
+/*Sales (DarkGray/Pink)*/
 .collectFestSale {
+	color: var(--white);
 	background: linear-gradient(90deg,var(--gray-dark) 80%, var(--pink) 20%);
 	width: 100%;
-	color: var(--white);
-	padding: 1em;
+	display: flex;
+	justify-content: space-around;
+}
+
+.collectFestSale section {
+	display: flex;
+	flex-direction: column;
+	padding: 1.3em 5em;
+}
+
+.collectFestSale img {
+	margin-right: 7em;
+	height: 100%;
 }
 
 .collectFestSale h2 {
-	font-size: 1.1em;
+	font-size: 2.4em;
 }
 
 .collectFestSale span {
@@ -145,10 +290,45 @@ header nav form input{
 }
 
 .collectFestSale p {
-	color: var(--gray);
-	font-size: 0.6em;
+	color: var(--white);
+	font-size: 1.4em;
 }
 
+.collectFestSale button {
+	background: var(--gray-dark);
+	color: var(--white);
+	border: 1px solid var(--white);
+	border-radius: 0.4em;
+	padding: 1em;
+	margin-top: 0.3em;
+	width: 25%;
+}
+
+@media (max-width: 700px){
+
+	.collectFestSale section {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.collectFestSale h2 {
+		font-size: 1em;
+	}
+
+	.collectFestSale p {
+		font-size: 0.7em;
+	}
+
+	.collectFestSale button {
+		width: 50%;
+	}
+
+	.collectFestSale img {
+		margin-right: 0;
+	}
+}
+
+/*Sales (DarkGray/Blue-Purple)*/
 .collectFestDeals {
 	display: flex;
 	flex-wrap: wrap;
@@ -156,27 +336,32 @@ header nav form input{
 }
 
 .collectFestDeals article {
-	height: 100px;
+	height: 10em;
 	border-radius: 10px;
 	display: flex;
 	justify-content: center;
-	margin: 15px;
 	flex-direction: column;
-	padding: 1em;
+	align-items: center;
 	flex-grow: 1;
+	padding: 1em;
 }
 
 .collectFestDeals article h2 {
-	font-size: 1em;
+	font-size: 2em;
 }
 
 .collectFestDeals article p {
-	font-size: 0.6em;
+	font-size: 1em;
 }
 
 /* Batman Collectibles */
 .collectFestDeals article:nth-of-type(1) {
 	background: linear-gradient(270deg,var(--gray-dark) 25%, var(--light-blue) 25%);
+}
+
+/* Mortal Kombat Collectibles */
+.collectFestDeals article:nth-of-type(2) {
+	background: linear-gradient(270deg,var(--gray-dark) 25%, var(--pink-purple) 25%);
 }
 
 .collectFestDeals article:nth-of-type(1), .collectFestDeals article:nth-of-type(2) {
@@ -187,12 +372,17 @@ header nav form input{
 }
 
 .collectFestDeals article:nth-of-type(1) img, .collectFestDeals article:nth-of-type(2) img {
-	height: 145%;
+	height: 123%;
 }
 
-/* Mortal Kombat Collectibles */
-.collectFestDeals article:nth-of-type(2) {
-	background: linear-gradient(270deg,var(--gray-dark) 25%, var(--pink-purple) 25%);
+@media (max-width: 700px){
+	.collectFestDeals  article h2{
+		font-size: 1em;
+	}
+
+	.collectFestDeals  article p{
+		font-size: 0.8em;
+	}
 }
 
 /******************/
@@ -203,8 +393,8 @@ header nav form input{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: max-content max-content;
-	flex-wrap: wrap;
 	justify-content: center;
+	grid-gap: 2em;
 }
 
 .availableSoon article:nth-of-type(1){
@@ -219,7 +409,6 @@ header nav form input{
 
 .availableSoon article {
 	background: var(--white);
-	margin: 1em;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
@@ -238,30 +427,13 @@ header nav form input{
 
 .availableSoon h3{
 	font-size: 1em;
-	order: -1;
+	text-transform: uppercase;
 	color: var(--gray);
+	order: -1;
 	padding: 0.5em 0 0 1em; 
 }
 
-/*****************/
-/* MEDIA QUERIES */
-/*****************/
 @media (max-width: 700px){
-	header nav {
-		grid-template-columns: 3em max-content 1fr;
-	}
-
-	header nav form {
-		grid-row-start: 2;
-		grid-column-start: 1;
-		margin-top: 0.4em;
-	}
-
-	header nav ul {
-		grid-column-start: 3;
-		grid-column-end: 4;
-	}
-
 	.availableSoon article:nth-of-type(1) {
 		grid-column-start: 1;
 		grid-column-end: 3;
@@ -271,5 +443,128 @@ header nav form input{
 		grid-column-start: 1;
 		grid-column-end: 3;
 		grid-row-start: 2;
+	}
+}
+
+/*************/
+/* Slideshow */
+/*************/
+
+/*Veel van de volgende code heb ik geleerd van een codepen */
+/* https://codepen.io/tojowe/pen/xxrLpv?editors=1100 */
+
+.slideShow {
+	width: 100%;
+	margin: 3em auto;
+	overflow: hidden;
+}
+
+.slideShow section {
+	width: 100%;;
+	display:flex;
+	position: relative;
+	animation-delay: 5s;
+    animation: slide 5s ease-in-out 3s infinite ;
+	animation-iteration-count: infinite; 
+}
+
+.slideShow img {
+	border-radius: 2em;
+	width: 100%;
+	float: left;
+}
+
+@keyframes slide {
+    0% {left:0;}
+    33% {left:-100%;}
+    66% {left:-200%;}
+    100% {left:-300%;}
+}
+
+/**************/
+/* TOP BRANDS */
+/**************/
+
+.topBrands {
+	background: var(--brands-background);
+	padding: 2em 0em 2em 0em;
+}
+
+.topBrands ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	grid-gap: 1.5em;
+	padding: 2em 0 2em 0;
+	width: 100%;
+}
+
+.topBrands ul li {
+	list-style: none;
+}
+
+.topBrands span {
+	color: var(--gray-darker);
+}
+
+.topBrands img {
+	background: var(--white);
+	border: 1px solid var(--gray-darker);
+	border-radius: 20px;
+	width: 100%;
+	padding: 1.5em;
+}
+
+.topBrands img:hover {
+	border: 1px solid var(--gray-dark);
+}
+
+@media (max-width: 700px){
+	.topBrands {
+		padding: 1em;
+	}
+}
+
+/****************/		/***************/
+/* GameInformer */		/* NewReleases */   
+/****************/		/***************/
+
+.gameInformer, .newReleases {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 2em;
+}
+
+.gameInformer button, .newReleases button {
+	border: none;
+}
+
+.gameInformer button, .gameInformer img, .newReleases button, .newReleases img {
+	border-radius: 1.5em;
+	width: 100%;
+}
+
+.gameInformer button:nth-of-type(1), .newReleases button:nth-of-type(1) {
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+.gameInformer button:nth-of-type(2), .newReleases button:nth-of-type(2) {
+	grid-column-start: 2;
+	grid-column-end: 3;
+}
+
+@media (max-width: 700px){
+	.gameInformer, .newReleases {
+		grid-template-rows: repeat(2, max-content);
+	}
+
+	.gameInformer button:nth-of-type(1), .newReleases button:nth-of-type(1) {
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+
+	.gameInformer button:nth-of-type(2), .newReleases button:nth-of-type(2){
+		grid-row-start: 2;
+		grid-column-start: 1;
 	}
 }
