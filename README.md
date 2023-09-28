@@ -142,9 +142,9 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   ### Verslag van meeting
   hier na afloop snel de uitkomsten van de meeting vastleggen
 
-  - punt 1
-  - punt 2
-  - nog een punt
+  - Ik kan het hamburger menu uitbreiding maken met een translate in combinatie met een overflow:hidden.
+  - De slideshow kan ik of maken dat hij gewoon voor terug gaat in die volgorde of ik moet ervoor zorgen dat het plaatje in het begin waar aan het einde wordt toegevoegd.
+  - Om meer pauze tussen de plaatjes te creëeren moet ik meer stappen in mijn animatie maken (waardere %en toevoegen)
 - ...
 
 </details>

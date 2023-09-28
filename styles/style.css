@@ -10,9 +10,9 @@
 /*********************/
 :root {
 	/*Colors*/
-	--background: #f2f4f7;
 	--white: #FFFFFF;
 	--black: #000000;
+	--highlight: #FF0000;
 	--searchbar: #f0f0f0;
 	--light: #f2f4f7;
 	--light-gray: #cfd4da;
@@ -23,11 +23,22 @@
 	--light-blue: #00dcfc;
 	--pink: #fe017e;
 	--pink-purple: #fb5ef5;
+	--proPurple: #6c40fd;
 	--grayoverlay: rgba(105,105,105,100);
+	--topDeals: #ff890a;
 
 	/*Fonts*/
 	--normaltext: 'Poppins', sans-serif;
 	--logotext: 'Anton', sans-serif;
+
+	/*Hover*/
+	/*Geleerd van: https://www.w3schools.com/howto/howto_css_zoom_hover.asp */
+	--hoverBigger: scale(1.02);
+	--hoverTransition: 0.3s;
+
+	/*Other*/
+	--classSectionMargin: 3em auto;
+	--sectionBorderRadius: 20px;
 }
 
 /****************/
@@ -42,8 +53,14 @@
 }
 
 body {
-	background: var(--background);
+	background: var(--white);
 }
+
+a, a:active {
+	color: var(--black);
+	text-decoration: none;
+}
+
 
 /*Ik had eerst geprobeerd om de mainPage in een grid te zetten zodat ik overal dezelfde
 styling kon geven, maar daardoor moest ik bij elke section aangeven bij welke row hij 
@@ -57,7 +74,8 @@ heb ik het nu weggelaten*/
 
 @media (max-width: 700px){
 	.mainPage {
-		width: 100%;
+		width: 95%;
+		margin: 0 auto;
 	}
 }
 
@@ -73,6 +91,7 @@ header .freeShipping {
 
 header .freeShipping p{
 	font-size: 0.9em;
+	font-weight: bold;
 	display: flex;
 	justify-content: center;
 	padding: 0.5em;
@@ -81,6 +100,7 @@ header .freeShipping p{
 
 /* Lichtblauwe balk */
 header .blueBanner {
+	font-weight: bold;
 	background: var(--light-blue);
 	color: var(--black);
 	display: flex;
@@ -106,13 +126,19 @@ header nav section:nth-of-type(2){
 .hamburgerMenu{
 	background: var(--white);
 	position: fixed;
-	width: 25%;;
+	width: 25%;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	transform: translate(-100%, 0% );
 	transition: 0.2s;
 	font-size: 1.3em;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.hamburgerMenu h2 {
+	font-size: 1em;
 }
 
 .hamburgerMenu p:first-of-type {
@@ -136,7 +162,7 @@ header nav section:nth-of-type(2){
 	color: var(--light-gray);
 }
 
-.hamburgerMenu h2 {
+.hamburgerMenu h3 {
 	padding: 1em;
 	font-weight: 600;
 	font-size: 1.1em;
@@ -154,9 +180,31 @@ header nav section:nth-of-type(2){
 	background: var(--light-gray);
 }
 
-.hamburgerMenu ul:first-of-type li:last-of-type {
-	color: red;
+.hamburgerMenu ul:first-of-type li:last-of-type:not(.videoGamesMenu ul:first-of-type li:last-of-type ) {
+	color: var(--highlight);
 	font-weight: 600;
+}
+
+.videoGamesMenu {
+	background: var(--white);
+	position: fixed;
+	transform: translate(100%,0%);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: 0.2s;
+}
+
+.videoGamesMenu section {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.videoGamesMenu section a {
+	font-size: 0.8em;
+	text-decoration: underline;
 }
 
 .toonHamburger {
@@ -165,6 +213,21 @@ header nav section:nth-of-type(2){
 	overflow-y: scroll;
 }
 
+.toonVideoGames {
+	transform: translate(0%,0%);
+}
+
+@media (max-width: 1000px){
+	.hamburgerMenu {
+		width: 50%;
+	}
+}
+
+@media (max-width: 700px){
+	.hamburgerMenu {
+		width: 100%;
+	}
+}
 
 
 header nav button:nth-of-type(1) {
@@ -200,16 +263,20 @@ header nav section:nth-of-type(2) ul li {
 	font-size: 0.8em;
 	list-style: none;
 	padding: 0.5em 0.7em;
+
+}
+
+header nav section:nth-of-type(2) ul li a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
 header nav button:nth-of-type(1):hover, 
-header nav section:nth-of-type(2) ul li:hover, 
+header nav section:nth-of-type(2) ul li a:hover, 
 .hamburgerMenu p:first-of-type:hover, 
 .hamburgerMenu p:nth-of-type(2):hover {
-	color: red;
+	color: var(--highlight);
 }
 
 header nav form {
@@ -330,20 +397,24 @@ header nav form input{
 
 /*Sales (DarkGray/Blue-Purple)*/
 .collectFestDeals {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+	grid-gap: 2em;
+	margin: var(--classSectionMargin);
 }
 
 .collectFestDeals article {
 	height: 10em;
-	border-radius: 10px;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
 	flex-grow: 1;
 	padding: 1em;
+}
+
+.collectFestDeals a  {
+	border-radius: var(--sectionBorderRadius);
 }
 
 .collectFestDeals article h2 {
@@ -355,12 +426,12 @@ header nav form input{
 }
 
 /* Batman Collectibles */
-.collectFestDeals article:nth-of-type(1) {
+.collectFestDeals a:nth-of-type(1) {
 	background: linear-gradient(270deg,var(--gray-dark) 25%, var(--light-blue) 25%);
 }
 
 /* Mortal Kombat Collectibles */
-.collectFestDeals article:nth-of-type(2) {
+.collectFestDeals a:nth-of-type(2) {
 	background: linear-gradient(270deg,var(--gray-dark) 25%, var(--pink-purple) 25%);
 }
 
@@ -395,6 +466,7 @@ header nav form input{
 	grid-template-rows: max-content max-content;
 	justify-content: center;
 	grid-gap: 2em;
+	margin: var(--classSectionMargin);
 }
 
 .availableSoon article:nth-of-type(1){
@@ -413,6 +485,11 @@ header nav form input{
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
+}
+
+.availableSoon article:hover {
+	transform: var(--hoverBigger);
+	transition: var(--hoverTransition);
 }
 
 .availableSoon article img {
@@ -453,32 +530,69 @@ header nav form input{
 /*Veel van de volgende code heb ik geleerd van een codepen */
 /* https://codepen.io/tojowe/pen/xxrLpv?editors=1100 */
 
-.slideShow {
+.slideShow4, .slideShow3 {
 	width: 100%;
-	margin: 3em auto;
 	overflow: hidden;
+	margin: var(--classSectionMargin);
 }
 
-.slideShow section {
-	width: 100%;;
-	display:flex;
+.slideShow3 ul, .slideShow4 ul {
+	display: flex;
 	position: relative;
-	animation-delay: 5s;
-    animation: slide 5s ease-in-out 3s infinite ;
-	animation-iteration-count: infinite; 
 }
 
-.slideShow img {
-	border-radius: 2em;
+.slideShow3 ul {
+	animation: slide3 15s ease-in-out 0s infinite;
+	width: 300%;
+}
+
+.slideShow4 ul {
+    animation: slide4 20s ease-in-out 0s infinite;
+	width: 400%;
+}
+
+.slideShow4 ul li {
 	width: 100%;
-	float: left;
+	list-style:none;
 }
 
-@keyframes slide {
-    0% {left:0;}
-    33% {left:-100%;}
-    66% {left:-200%;}
-    100% {left:-300%;}
+.slideShow4 img, .slideShow3 img {
+	border-radius: var(--sectionBorderRadius);
+	width: 100%;
+}
+
+@keyframes slide3 {
+	0% {left: 0%;}
+	11% {left: 0%;}
+	22% {left: 0%;}
+	33% {left: -100%;}
+	44% {left: -100%;}
+	55% {left: -100%;}
+	66% {left: -100%;}
+	77% {left: -200%;}
+	88% {left: -200%;}
+	99% {left: -200%;}
+	100% {left: -200%;}
+}
+
+@keyframes slide4 {
+    0%  {left:0;}
+	5%  {left:0;}
+	10% {left:0;}
+	15% {left:0;}
+	25% {left:0;}
+   	30% {left:-100%;}
+	35% {left:-100%;}
+	40% {left:-100%;}
+	45% {left:-100%;}
+    50% {left:-200%;}
+	55% {left:-200%;}
+	60% {left:-200%;}
+	65% {left:-200%;}
+	75% {left:-300%;}
+	80% {left:-300%;}
+	95% {left:-300%;}
+	100% {left:-300%;}
 }
 
 /**************/
@@ -487,18 +601,15 @@ header nav form input{
 
 .topBrands {
 	background: var(--brands-background);
-	padding: 2em 0em 2em 0em;
+	margin: var(--classSectionMargin);
 }
 
 .topBrands ul {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
 	grid-gap: 1.5em;
 	padding: 2em 0 2em 0;
 	width: 100%;
-}
-
-.topBrands ul li {
 	list-style: none;
 }
 
@@ -518,10 +629,14 @@ header nav form input{
 	border: 1px solid var(--gray-dark);
 }
 
+.topBrands button {
+	border: none;
+}
+
 @media (max-width: 700px){
 	.topBrands {
 		padding: 1em;
-	}
+;	}
 }
 
 /****************/		/***************/
@@ -532,6 +647,7 @@ header nav form input{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 2em;
+	margin: var(--classSectionMargin);
 }
 
 .gameInformer button, .newReleases button {
@@ -567,4 +683,521 @@ header nav form input{
 		grid-row-start: 2;
 		grid-column-start: 1;
 	}
+}
+
+/********/
+/* PTCG */
+/********/
+.ptcg {
+	margin: var(--classSectionMargin);
+	margin-bottom: 10em;
+}
+
+.ptcg section:first-of-type a {
+	text-decoration: underline;
+}
+
+.ptcg section:first-of-type {
+	text-align: center;
+}
+
+.ptcg section:last-of-type {
+	width: 100%;
+	display: grid;
+	grid-gap: 1em;
+	grid-row-gap: 4em;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.ptcg article {
+	display: grid;
+	grid-template-rows: 20em 4em;
+	height: 20em;
+	padding: 1em;
+}
+
+.ptcg article:hover {
+	transform: var(--hoverBigger);
+	transition: var(--hoverTransition);
+}
+
+.ptcg article img {
+	width: 100%;
+	align-self: center;
+}
+
+.ptcg article p {
+	font-weight: bold;
+}
+
+/***********************/
+/* Pre-Order Slideshow */
+/***********************/
+
+.preOrderSlideShow {
+	margin: var(--classSectionMargin);
+	overflow: auto;
+}
+
+.preOrderSlideShow section{
+	margin: 0 auto;
+	overflow-x: auto;
+	position: relative;
+	display: flex;
+	width: 200%;
+}
+
+.preOrderSlideShow a {
+	width: 100%;
+}
+
+.preOrderSlideShow article {
+	background: var(--white);
+	border-radius: var(--sectionBorderRadius);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: max-content 60px max-content;
+	flex-direction: column;
+	margin: 0.7em;
+}
+
+.preOrderSlideShow article:hover {
+	transform: var(--hoverBigger);
+	transition: var(--hoverTransition);
+}
+
+.preOrderSlideShow a article img {
+	border-radius: 0 0 10px 10px;
+	object-fit: cover;
+	width: 100%;
+}
+
+.preOrderSlideShow h3 {
+	font-size: 1em;
+	padding: 0 0 0.5em 0.7em;
+}
+
+.preOrderSlideShow h4{
+	font-size: 0.9em;
+	text-transform: uppercase;
+	color: var(--gray);
+	order: -1;
+	padding: 0.5em 0 0 1em; 
+}
+
+/***************/
+/* Today Deals */
+/***************/
+
+.todayDeals {
+	background: var(--topDeals);
+	border-radius: var(--sectionBorderRadius);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 1em;
+	margin: var(--classSectionMargin);
+}
+
+.todayDeals h2 {
+	color: var(--white);
+	font-size: 2.5em;
+	padding-right: 1em;
+}
+
+.todayDeals p {
+	color: var(--white);
+}
+
+.todayDeals button {
+	font-weight: bold;
+	background: none;
+	color: var(--white);
+	border: 2px solid var(--white);
+	border-radius: 0.4em;
+	padding: 1em 2em;
+	margin-left: 1em;
+}
+
+/*************/
+/* Pre-Owned */
+/*************/
+
+.pre-owned {
+	margin: var(--classSectionMargin);
+}
+
+.pre-owned section:first-of-type a {
+	text-decoration: underline;
+}
+
+.pre-owned section:first-of-type {
+	text-align: center;
+}
+
+.pre-owned section:last-of-type {
+	width: 100%;
+	display: grid;
+	grid-gap: 1em;
+	grid-row-gap: 4em;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.pre-owned article {
+	display: grid;
+	grid-template-rows: 20em repeat(4, max-content);
+}
+
+.pre-owned article:hover {
+	transform: var(--hoverBigger);
+	transition: var(--hoverTransition);
+}
+
+.pre-owned article img {
+	width: 90%;
+	align-self: center;
+}
+
+.pre-owned article h3 {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.pre-owned article p:nth-of-type(2):not(.pre-owned article p:last-of-type) {
+	color: var(--white);
+	font-size: 0.7em;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.pre-owned article p span {
+	background: var(--black);
+	border-radius: 2em;
+	padding: 0.5em;
+}
+
+.pre-owned article p:last-of-type {
+	font-weight: bold;
+}
+
+.pre-owned article h3 span {
+	color: var(--highlight);
+}
+
+/****************/
+/* Circle Cards */
+/****************/
+
+.circleCards {
+	width: 100%;
+	margin: var(--classSectionMargin);
+}
+
+.circleCards ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+	grid-gap: 2em;
+	padding: 2em 0 2em 0;
+	width: 100%;
+}
+
+.circleCards ul li {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-weight: bold;
+}
+
+.circleCards img {
+	border-radius: 50%;
+	width: 100%;
+}
+
+.circleCards ul li {
+	border: none;
+	font-weight: 600;
+	font-size: 1em;
+	background: var(--white);
+}
+
+/**************/
+/* BottomText */
+/**************/
+
+.bottomText {
+	text-align: center;
+	line-height: 1.7;
+	margin: var(--classSectionMargin);
+}
+
+.bottomText span {
+	font-weight: bold;
+}
+
+/**********/
+/* Footer */
+/**********/
+
+footer {
+	background: white;
+	width: 100%;
+}
+
+footer nav {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+footer nav>ul {
+	list-style: none;
+	padding: 1em 2em;
+}
+
+footer nav ul:nth-of-type(4) img {
+	margin: 0 0.2em;
+}
+
+footer section {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 25%);
+}
+
+footer section p{
+	padding: 1em 2em;
+}
+
+
+footer section p:first-of-type{
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+footer section p:last-of-type {
+	grid-column-start: 2;
+	grid-column-end: 4;
+}
+
+footer nav span {
+	font-size: 1em;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+footer nav ul:not(footer nav ul:nth-of-type(4)) li:not(footer nav ul li:first-of-type):hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+footer nav ul:nth-of-type(4) form input{
+	font-size: 1em;
+	background: var(--searchbar);
+	border: none;
+	padding: 0.4em;
+}
+
+
+footer nav ul:nth-of-type(4) form button{
+	text-transform: uppercase;
+	font-size: 1em;
+	font-weight:bold;
+	color: var(--white);
+	background: var(--highlight);
+	padding: 0.4em;
+}
+
+footer nav ul:nth-of-type(4) li:nth-of-type(5){
+	display: flex;
+	justify-content: start;
+}
+
+footer nav ul:nth-of-type(4) li:nth-of-type(5) img{
+	width: 150px;
+}
+
+footer nav ul:nth-of-type(4) li:nth-of-type(7){
+	display:flex;
+}
+
+footer section span:hover{
+	color:red;
+	text-decoration: underline;
+}
+
+/********************************/
+/*** Super Mario Bros. Wonder ***/
+/********************************/
+
+.smbwMain {
+	width: 95%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 70% 30%;
+	grid-gap: 1em;
+}
+
+/****************/
+/* Right-column */
+/****************/
+
+.smbwRightColumn {
+	grid-column-start: 2;
+}
+
+.smbwRightColumn>a {
+	text-decoration: underline;
+}
+
+.smbwRightColumn section:first-of-type {
+	display: flex;
+	align-items: center;
+}
+
+.smbwRightColumn section:first-of-type p{
+	font-weight: 600;
+	color: var(--gray-darker);
+	margin-left: 1em;
+}
+
+.smbwRightColumn section:first-of-type h3 {
+	font-size: 2em;
+}
+
+.smbwRightColumn section:nth-of-type(2) {
+	display: flex;
+	align-items: center;
+}
+
+.smbwRightColumn section:nth-of-type(2) section{
+	padding: 0.3em;
+	border-radius: 10px;
+	background: var(--proPurple);
+	display: flex;
+	width: 80%;
+}
+
+.smbwRightColumn section:nth-of-type(2) section p {
+	color: var(--white);
+}
+
+.smbwRightColumn section:nth-of-type(2) a {
+	text-decoration: underline;
+	margin-left: 0.2em;
+}
+
+.smbwRightColumn section:nth-of-type(3) {
+	margin: 2em 0;
+}
+
+.smbwRightColumn section:nth-of-type(3) span {
+	font-weight: 600;
+}
+
+.smbwRightColumn section:nth-of-type(3) button {
+	padding: 0.8em;
+	border-radius: 5px;
+	margin-right: 1em;
+}
+
+.smbwRightColumn section:nth-of-type(3) button:last-of-type {
+	border: 2px solid var(--black);
+}
+
+.smbwRightColumn section:nth-of-type(4) span {
+	font-weight: 600;
+}
+
+.smbwRightColumn section:nth-of-type(4) button {
+	display:flex;
+	flex-direction: column;
+	align-items: flex-start;
+	flex-grow: 1;
+	border-radius: 5px;
+	border: none;
+	margin: 0.3em;
+	padding: 0.5em;
+}
+
+.smbwRightColumn section:nth-of-type(4) button:last-of-type {
+	border: 3px solid var(--black);	
+}
+
+.smbwRightColumn section:nth-of-type(5) p:first-of-type {
+	font-weight: 600;
+}
+
+.smbwRightColumn section:nth-of-type(5) span {
+	text-transform: uppercase;
+}
+
+.smbwRightColumn section:nth-of-type(6) {
+	width: 100%;
+}
+
+.smbwRightColumn section:nth-of-type(6) button{
+	color: var(--white);
+	font-size: 1em;
+	font-weight: 600;
+	border: none;
+	border-radius: 5px;
+	width: 100%;
+	background-color: var(--highlight);
+	padding: 1em;
+	margin: 2em 0;
+}
+
+/*********/
+/* Bonus */
+/*********/
+
+.smbwBonus {
+	grid-column-start: 1;
+}
+
+.smbwBonus h3 {
+	font-size: 2em;
+	text-transform: uppercase;
+	font-weight: 600;
+	text-align: center;
+}
+
+.smbwBonus>section {
+	display:flex;
+}
+
+/**************/
+/* Description*/
+/**************/
+.smbwDescription {
+	grid-column-start: 1;
+}
+
+.smbwDescription h4 {
+	padding: 1em 0em;
+}
+
+/***************/
+/* Specifations*/
+/***************/
+
+.smbwSpecifications {
+	grid-column-start: 1;
+}
+
+.smbwSpecifications h3 {
+	font-size: 1.5em;
+}
+
+.smbwSpecifications h4:not(.smbwSpecifications h4:first-of-type) {
+	font-size: 1.3em;
+	margin-top: 1.8em;
+}
+
+.smbwSpecifications table th {
+	min-width: 19em;
+	text-align: start;
+	padding: 0.5em 0em 0.5em 1em;
+	font-size: 1em;
 }
