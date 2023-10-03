@@ -40,11 +40,11 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   #### Screenshot(s) van de eerste pagina (small screen): 
   Homepagina 
-  <img src="readme-images/GameStop_HomePagina.jpg" width="375px" alt="Homepagina van de website">
+  <img src="readme-images/GameStop_HomePagina.JPG" width="375px" alt="Homepagina van de website">
 
   #### Screenshot(s) van de tweede pagina (small screen):
   Detailpagina Super Mario Wonder 
-  <img src="readme-images/GameStop_SuperMarioWonder.jpg" width="375px" alt="Een detailpagina van een specifiek spel: Super Mario Wonder>
+  <img src="readme-images/GameStop_SuperMarioWonder.JPG" width="375px" alt="Een detailpagina van een specifiek spel: Super Mario Wonder">
  
 </details>
 
