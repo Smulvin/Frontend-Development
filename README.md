@@ -205,6 +205,11 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   - Dark mode en high-contrast mode zijn niet ondersteund, maar dat was ook niet mijn focus. Mijn focus was vooral responsiveness
   - Ik heb geen teksten die plaatjes overlappen, want bij alle plaatjes met tekst, zit de tekst in het plaatje
   - Ik heb geen ::selection colors
+  <img src="readme-images/WCAG_1.JPG" alt="WCAG checklist screenshot 1">
+  <img src="readme-images/WCAG_2.JPG" alt="WCAG checklist screenshot 2">
+  <img src="readme-images/WCAG_3.JPG" alt="WCAG checklist screenshot 3">
+  <img src="readme-images/WCAG_4.JPG" alt="WCAG checklist screenshot 4">
+  <img src="readme-images/WCAG_5.JPG" alt="WCAG checklist screenshot 5">
 </details>
 
 
@@ -261,12 +266,12 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   ### Dit ging goed/Heb ik geleerd: 
   Tijdens het maken van deze opdracht heb ik veel leren werken met grids. Dit had ik hiervoor nog niet echt gedaan. Deze heb ik dan ook op meerdere plekken geprobeerd te verwerken.
-  <img src="readme-images/Eindgesprek_GridBrands.jpg" width="375px" alt="Grid van de Top Brands die volledig responsive is">
-  <img src="readme-images/Eindgesprek_GridSlider.jpg" width="375px" alt="Grid van de verschillende cards om ze allemaal dezelfde stijl te geven">
+  <img src="readme-images/Eindgesprek_GridBrands.JPG" width="375px" alt="Grid van de Top Brands die volledig responsive is">
+  <img src="readme-images/Eindgesprek_GridSlider.JPG" width="375px" alt="Grid van de verschillende cards om ze allemaal dezelfde stijl te geven">
 
   Ook heb ik een wat meer advanced animatie gemaakt voor mijn slideshow. Ik ben hier aardig trots op dat dit is gelukt.
-  <img src="readme-images/Eindgesprek_Animatie.jpg" width="375px" alt="De animatie van de slider die meerdere keren wordt gebruikt">
-  <img src="readme-images/Eindgesprek_AnimatieCode.jpg" width="375px" alt="De code van de animatie">
+  <img src="readme-images/Eindgesprek_Animatie.JPG" width="375px" alt="De animatie van de slider die meerdere keren wordt gebruikt">
+  <img src="readme-images/Eindgesprek_AnimatieCode.JPG" width="375px" alt="De code van de animatie">
 
   ### Dit was lastig/Is niet gelukt:
   Het is me helaas niet gelukt om in de javascript een stuk code semantisch te doen. De manier die ik had gevolgd werkte helaas niet met een classList.add
